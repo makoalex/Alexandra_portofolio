@@ -8,7 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Contact() {
   const form = useRef();
-
+  emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+  
   const showToastMessage = () => {
     const content = "Message Sent!";
     const options = {
@@ -20,22 +21,25 @@ export default function Contact() {
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
-      .sendForm(
+      .send(
         "service_xr60byh",
         "template_sc3hy2n",
-        form.current,
-        "QjxmSnzVttKbWJTxW"
+        {
+          name: form.current.name.value,
+          email: form.current.email.value,
+          message: form.current.message.value,
+        },
       )
       .then(
         (result) => {
           console.log(result.text);
+          showToastMessage();
           form.current.reset();
         },
         (error) => {
           console.log(error.text);
-        }
+        },
       );
-    showToastMessage();
   };
   return (
     <>
