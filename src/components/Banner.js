@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
-import Pdf from "../public/resume.pdf"
+import Pdf from "../public/resume1.pdf"
 
 export default function test() {
   
